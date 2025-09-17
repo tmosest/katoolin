@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-from __future__ import absolute_import
-from __future__ import print_function
+
+
 from core.categories import *
 import sys, os
 from six.moves import range
@@ -45,7 +45,7 @@ def show_categories():
 	Displays the categories available in the 'categories' dictionary of the core/categories.py file
 	"""
 	print("\n%s:: Categories:%s\n" %(green, reset))
-	for name in categories.items():
+	for name in list(categories.items()):
 		category = name[1][0]
 		category = format(category)
 		if name[0]%2 != 0:
@@ -69,7 +69,7 @@ def load_category(key):
 		action = False
 		while action == False:
 			try:
-				option = input(": katoolin (%s%s%s) > " %(yellow, site, reset))
+				option = eval(input(": katoolin (%s%s%s) > " %(yellow, site, reset)))
 			except KeyboardInterrupt:
 				delete_repository()
 				print("..."); break
@@ -103,7 +103,7 @@ def search_tool(tool):
 	"""
 	print(": Find " + yellow + tool + reset)
 	print(": Available in:")
-	for lists in categories.items():
+	for lists in list(categories.items()):
 		tools = lists[1][1]
 		category = lists[1][0]
 		category = format(category)
@@ -230,7 +230,7 @@ def num_tools():
 	Obtains the number of tools available
 	"""
 	num = 0
-	for name in categories.items():
+	for name in list(categories.items()):
 		tools = name[1][1]
 		num+= len(tools)
 	return num

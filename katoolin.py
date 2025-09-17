@@ -1,10 +1,15 @@
 #!/usr/bin/python
 
-from __future__ import absolute_import
-from __future__ import print_function
+
+
 import os
 import sys, traceback
+
+import six
+six.moves.reload_module(six)
+
 from six.moves import input
+
 
 
 if os.getuid() != 0:
@@ -41,7 +46,7 @@ def main():
 
 			''')
 
-				opcion0 = input("\033[1;36mkat > \033[1;m")
+				opcion0 = eval(input("\033[1;36mkat > \033[1;m"))
 			
 				while opcion0 == "1":
 					print ('''
@@ -51,7 +56,7 @@ def main():
 4) View the contents of sources.list file
 
 					''')
-					repo = input("\033[1;32mWhat do you want to do ?> \033[1;m")
+					repo = eval(input("\033[1;32mWhat do you want to do ?> \033[1;m"))
 					if repo == "1":
 						cmd1 = os.system("apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED444FF07D8D0BF6")
 						cmd2 = os.system("echo '# Kali linux repositories | Added by Katoolin\ndeb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list")
@@ -96,13 +101,13 @@ Like the classic GNOME menu, it includes Wine games and applications if you have
 For more information , please visit : http://www.florian-diesch.de/software/classicmenu-indicator/
 
 ''')
-					repo = input("\033[1;32mDo you want to install classicmenu indicator ? [y/n]> \033[1;m")
+					repo = eval(input("\033[1;32mDo you want to install classicmenu indicator ? [y/n]> \033[1;m"))
 					if repo == "y":
 						cmd1 = os.system("add-apt-repository ppa:diesch/testing && apt-get update")
 						cmd = os.system("sudo apt-get install classicmenu-indicator")
 
 				elif opcion0 == "4"	:
-					repo = input("\033[1;32mDo you want to install Kali menu ? [y/n]> \033[1;m")
+					repo = eval(input("\033[1;32mDo you want to install Kali menu ? [y/n]> \033[1;m"))
 					if repo == "y":
 						cmd1 = os.system("apt-get install kali-menu")
 				elif opcion0 == "5":
@@ -135,7 +140,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 			 ''')
 						print ("\033[1;32mSelect a category or press (0) to install all Kali linux tools .\n\033[1;m")
 
-						opcion1 = input("\033[1;36mkat > \033[1;m")
+						opcion1 = eval(input("\033[1;36mkat > \033[1;m"))
 						if opcion1 == "back":
 							inicio1()
 						elif opcion1 == "gohome":
@@ -180,7 +185,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install acccheck")
 
@@ -335,7 +340,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install bbqsql")
 
@@ -441,7 +446,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install aircrack-ng")
 
@@ -546,7 +551,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
 
 							
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install apache-users")
 
@@ -664,7 +669,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install burpsuite")
 
@@ -767,7 +772,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install cryptcat")
 
@@ -828,7 +833,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install casefile")
 
@@ -884,7 +889,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install armitage")
 
@@ -952,7 +957,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install binwalk")
 
@@ -1032,7 +1037,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install dhcpig")
 
@@ -1098,7 +1103,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install acccheck")
 
@@ -1201,7 +1206,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install apktool")
 
@@ -1249,7 +1254,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 				 
 						''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("apt-get install android-sdk")
 
@@ -1281,7 +1286,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 2) Squid3
 				''')
 							print ("\033[1;32mInsert the number of the tool to install it .\n\033[1;m")
-							opcion2 = input("\033[1;36mkat > \033[1;m")
+							opcion2 = eval(input("\033[1;36mkat > \033[1;m"))
 							if opcion2 == "1":
 								cmd = os.system("git clone https://github.com/LionSec/wifresti.git && cp wifresti/wifresti.py /usr/bin/wifresti && chmod +x /usr/bin/wifresti && wifresti")
 								print (" ")
