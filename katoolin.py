@@ -112,6 +112,7 @@ For more information , please visit : http://www.florian-diesch.de/software/clas
 
 				elif opcion0 == "4"	:
 					repo = eval(input("\033[1;32mDo you want to install Kali menu ? [y/n]> \033[1;m"))
+					# TODO this is still broken 
 					repo = f"{repo}"
 					if repo == "y":
 						cmd1 = os.system("apt-get install kali-menu")

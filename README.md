@@ -8,7 +8,7 @@ Automatically install all Kali linux tools
 - Install Kali linux tools
 
 # Requirements
-- Python 2.7
+- Python 3.12
 - An operating system (tested on Ubuntu)
 
 # Installation
@@ -30,18 +30,15 @@ https://www.youtube.com/watch?v=8VxCWVoZEEE
 # Warning
 Before updating your system , please remove all Kali-linux repositories to avoid any kind of problem .
 
-# I have some questions!
+Might need this is update command wont work.
 
-Please visit https://github.com/LionSec/katoolin/issues
-
-# Donations
-- Paypal : https://www.paypal.me/lionsec
-- skrill : informatica98es@gmail.com
-
-
-# Contact
-- Website : https://neodrix.com
-- Youtube : https://youtube.com/inf98es
-- Facebook : https://facebook.com/in98
-- Twitter: @LionSec1
-- Email : informatica98es@gmail.com
+```
+# download
+wget http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2024.1_all.deb
+# install
+sudo dpkg -i kali-archive-keyring_2024.1_all.deb
+# remove downloaded file again
+rm kali-archive-keyring_2024.1_all.deb
+# update
+sudo apt-get update
+```
