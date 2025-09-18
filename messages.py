@@ -1,1 +1,6 @@
 NEED_SUDO = "Sorry. This script requires sudo privledges"
+OPTION_1 = "\033[1;36mkat > \033[1;m"
+WHAT_TO_DO = "\033[1;32mWhat do you want to do ?> \033[1;m"
+INVALID_COMMAD = "\033[1;31mSorry, that was an invalid command!\033[1;m"
+TO_INSTALL_CLASS = "\033[1;32mDo you want to install classicmenu indicator ? [y/n]> \033[1;m"
+TO_INSTALL_KALI = "\033[1;32mDo you want to install Kali menu ? [y/n]> \033[1;m"

@@ -10,8 +10,8 @@ six.moves.reload_module(six)
 
 from six.moves import input
 
-from messages import NEED_SUDO
-from menu import INFO_GATHERING, MENU_TITLE, MAIN_MENU_OPTIONS, FIRST_SUB_MENU, OPTION_1, WHAT_TO_DO, INVALID_COMMAD, CLASSIC_MENU, TO_INSTALL_CLASS, TO_INSTALL_KALI, LIST_COMMANDS, CATEGORIES
+from messages import NEED_SUDO, OPTION_1, WHAT_TO_DO, INVALID_COMMAD, TO_INSTALL_CLASS, TO_INSTALL_KALI
+from menu import MENU_TITLE, MAIN_MENU_OPTIONS, FIRST_SUB_MENU, CLASSIC_MENU, LIST_COMMANDS, CATEGORIES
 from cmd_utils import is_sudo, run_eval, run_cmd, get_kali_linux_certs, update_apps, remove_kali, read_sources, add_classic, add_kali_menu
 from tools import handle_options, TOOL_CAT_MAP, install_all
 

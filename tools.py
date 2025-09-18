@@ -1,7 +1,7 @@
 # TODO test this... I'm sure I broke some of them by messing up the ordering or something...
 
 from cmd_utils import install_tool, run_cmd, run_eval
-from menu import INVALID_COMMAD, OPTION_1
+from messages import INVALID_COMMAD, OPTION_1
 
 def is_integer(s):
     try:
@@ -38,8 +38,8 @@ class ToolData:
     
     def install_tool_by_index(self, i):
         i = int(i) - 1
-        if i in self.EXCEPTIONS:
-            return run_cmd(self.EXCEPTIONS[i])
+        if self.TOOLS_ARR[i].lower() in self.EXCEPTIONS:
+            return run_cmd(self.EXCEPTIONS[self.TOOLS_ARR[i]].lower())
         
         install_tool(self.TOOLS_ARR[i])
 
@@ -49,38 +49,38 @@ class ToolData:
     
 TOOL_PROMPT = "\033[1;32mInsert the number of the tool to install it .\n\033[1;m"
 
-TOOLS_STR = "acccheck ace-voip amap automater braa casefile cdpsnarf cisco-torch cookie-cadger copy-router-config dmitry dnmap dnsenum dnsmap dnsrecon dnstracer dnswalk dotdotpwn enum4linux enumiax exploitdb fierce firewalk fragroute fragrouter ghost-phisher golismero goofile lbd maltego-teeth masscan metagoofil miranda nmap p0f parsero recon-ng set smtp-user-enum snmpcheck sslcaudit sslsplit sslstrip sslyze thc-ipv6 theharvester tlssled twofi urlcrazy wireshark wol-e xplico ismtp intrace hping3 bbqsql bed cisco-auditing-tool cisco-global-exploiter cisco-ocs cisco-torch copy-router-config doona dotdotpwn greenbone-security-assistant hexorbase jsql lynis nmap ohrwurm openvas-cli openvas-manager openvas-scanner oscanner powerfuzzer sfuzz sidguesser siparmyknife sqlmap sqlninja sqlsus thc-ipv6 tnscmd10g unix-privesc-check yersinia aircrack-ng asleap bluelog blueranger bluesnarfer bully cowpatty crackle eapmd5pass fern-wifi-cracker ghost-phisher giskismet gqrx kalibrate-rtl killerbee kismet mdk3 mfcuk mfoc mfterm multimon-ng pixiewps reaver redfang spooftooph wifi-honey wifitap wifite apache-users arachni bbqsql blindelephant burpsuite cutycapt davtest deblaze dirb dirbuster fimap funkload grabber jboss-autopwn joomscan jsql maltego-teeth padbuster paros parsero plecost powerfuzzer proxystrike recon-ng skipfish sqlmap sqlninja sqlsus ua-tester uniscan vega w3af webscarab websploit wfuzz wpscan xsser zaproxy burpsuite dnschef fiked hamster-sidejack hexinject iaxflood inviteflood ismtp mitmproxy ohrwurm protos-sip rebind responder rtpbreak rtpinsertsound rtpmixsound sctpscan siparmyknife sipp sipvicious sniffjoke sslsplit sslstrip thc-ipv6 voiphopper webscarab wifi-honey wireshark xspy yersinia zaproxy cryptcat cymothoa dbd dns2tcp http-tunnel httptunnel intersect nishang polenum powersploit pwnat ridenum sbd u3-pwn webshells weevely casefile cutycapt dos2unix dradis keepnote magictree metagoofil nipper-ng pipal armitage backdoor-factory cisco-auditing-tool cisco-global-exploiter cisco-ocs cisco-torch crackle jboss-autopwn linux-exploit-suggester maltego-teeth set shellnoob sqlmap thc-ipv6 yersinia beef-xss binwalk bulk-extractor chntpw cuckoo dc3dd ddrescue dumpzilla extundelete foremost galleta guymager iphone-backup-analyzer p0f pdf-parser pdfid pdgmail peepdf volatility xplico dhcpig funkload iaxflood inviteflood ipv6-toolkit mdk3 reaver rtpflood slowhttptest t50 termineter thc-ipv6 thc-ssl-dos acccheck burpsuite cewl chntpw cisco-auditing-tool cmospwd creddump crunch findmyhash gpp-decrypt hash-identifier hexorbase john johnny keimpx maltego-teeth maskprocessor multiforcer ncrack oclgausscrack pack patator polenum rainbowcrack rcracki-mt rsmangler statsprocessor thc-pptp-bruter truecrack webscarab wordlists zaproxy apktool dex2jar python-distorm3 edb-debugger jad javasnoop jd ollydbg smali valgrind yara android-sdk apktool arduino dex2jar sakis3g smali"
+TOOLS_STR = "acccheck ace-voip amap automater bing-ip2hosts braa casefile cdpsnarf cisco-torch cookie-cadger copy-router-config dmitry dnmap dnsenum dnsmap dnsrecon dnstracer dnswalk dotdotpwn enum4linux enumiax exploitdb fierce firewalk fragroute fragrouter ghost-phisher golismero goofile lbd maltego-teeth masscan metagoofil miranda nmap p0f parsero recon-ng set smtp-user-enum snmpcheck sslcaudit sslsplit sslstrip sslyze thc-ipv6 theharvester tlssled twofi urlcrazy wireshark wol-e xplico ismtp intrace hping3"
 
 TOOLS_DATA= ToolData("Information Gathering", TOOLS_STR, 
-                     {4: "wget http://www.morningstarsecurity.com/downloads/bing-ip2hosts-0.4.tar.gz && tar -xzvf bing-ip2hosts-0.4.tar.gz && cp bing-ip2hosts-0.4/bing-ip2hosts /usr/local/bin/"
-                      , 35: 'echo ntop is unavailable'})
+                     {'bing-ip2hosts': "wget http://www.morningstarsecurity.com/downloads/bing-ip2hosts-0.4.tar.gz && tar -xzvf bing-ip2hosts-0.4.tar.gz && cp bing-ip2hosts-0.4/bing-ip2hosts /usr/local/bin/"
+                      , 'ntop': 'echo ntop is unavailable'})
 
-VUL_STR="bbqsql bed cisco-auditing-tool cisco-global-exploiter cisco-ocs cisco-torch copy-router-config doona dotdotpwn greenbone-security-assistant hexorbase jsql lynis nmap ohrwurm openvas-cli openvas-manager openvas-scanner oscanner powerfuzzer sfuzz sidguesser siparmyknife sqlmap sqlninja sqlsus thc-ipv6 tnscmd10g unix-privesc-check yersinia"
+VUL_STR="bbqsql bed cisco-auditing-tool cisco-global-exploiter cisco-ocs cisco-torch copy-router-config stasinopoulos dbpwaudit doona dotdotpwn greenbone-security-assistant gsd hexorbase inguma jsql lynis nmap ohrwurm openvas-cli openvas-administrator openvas-manager openvas-scanner oscanner powerfuzzer sfuzz sidguesser siparmyknife sqlmap sqlninja sqlsus thc-ipv6 tnscmd10g unix-privesc-check yersinia"
 
 VUL_DATA = ToolData("Vulnerability Analysis", VUL_STR, {
-    7: "apt-get install git && git clone https://github.com/stasinopoulos/commix.git commix && cd commix && python ./commix.py --install",
-    8: "echo 'download page : http://www.cqure.net/wp/tools/database/dbpwaudit/'",
-    12: "apt-get install git && git clone git://git.kali.org/packages/gsd.git",
-    14: "Please download inguma from : http://inguma.sourceforge.net"
+    'stasinopoulos': "apt-get install git && git clone https://github.com/stasinopoulos/commix.git commix && cd commix && python ./commix.py --install",
+    'dbpwaudit': "echo 'download page : http://www.cqure.net/wp/tools/database/dbpwaudit/'",
+    'gsd': "apt-get install git && git clone git://git.kali.org/packages/gsd.git",
+    'inguma': "Please download inguma from : http://inguma.sourceforge.net"
 })
 
-WIRELESS_ATTACKS_STR = "aircrack-ng asleap bluelog blueranger bluesnarfer bully cowpatty crackle eapmd5pass fern-wifi-cracker ghost-phisher giskismet gqrx kalibrate-rtl killerbee kismet mdk3 mfcuk mfoc mfterm multimon-ng pixiewps reaver redfang spooftooph wifi-honey wifitap wifite"
+WIRELESS_ATTACKS_STR = "aircrack-ng asleap bluelog blueranger bluesnarfer bully cowpatty crackle eapmd5pass fern-wifi-cracker ghost-phisher giskismet gqrx kalibrate-rtl killerbee kismet mdk3 mfcuk mfoc mfterm multimon-ng pixiewps reaver redfang RTLSDR-Scanners pooftooph wifi-honey wifitap wifite"
 
 WIRELESS_ATTACK_DATA = ToolData("Wireless Attacks", WIRELESS_ATTACKS_STR, {
-    3: "apt-get install git && git clone git://git.kali.org/packages/bluemaho.git",
-    4: "apt-get install git && git clone git://git.kali.org/packages/bluepot.git",
-    15: "apt-get install git && git clone git://git.kali.org/packages/gr-scan.git"
+    'bluemaho': "apt-get install git && git clone git://git.kali.org/packages/bluemaho.git",
+    'bluepot': "apt-get install git && git clone git://git.kali.org/packages/bluepot.git",
+    'gr-scan': "apt-get install git && git clone git://git.kali.org/packages/gr-scan.git"
 })
 
-WEB_ATTACKS_STR = "apache-users arachni bbqsql blindelephant burpsuite cutycapt davtest deblaze dirb dirbuster fimap funkload grabber jboss-autopwn joomscan jsql maltego-teeth padbuster paros parsero plecost powerfuzzer proxystrike recon-ng skipfish sqlmap sqlninja sqlsus ua-tester uniscan vega w3af webscarab websploit wfuzz wpscan xsser zaproxy"
+WEB_ATTACKS_STR = "apache-users arachni bbqsql blindelephant burpsuite commix cutycapt davtest deblaze dirb dirbuster fimap funkload grabber jboss-autopwn joomscan jsql maltego-teeth padbuster paros parsero plecost powerfuzzer proxystrike recon-ng skipfish sqlmap sqlninja sqlsus ua-tester uniscan vega w3af webscarab webshag WebSlayer websploit wfuzz wpscan xsser zaproxy"
 
 WEB_ATTACKS_DATA = ToolData("Web Applications", WEB_ATTACKS_STR, {
-    6: "apt-get install git && git clone https://github.com/stasinopoulos/commix.git commix && cd commix && python ./commix.py --install",
-    34: "echo Webshag is unavailable",
-    35: "apt-get install git && git clone git://git.kali.org/packages/webslayer.git"
+    'commix': "apt-get install git && git clone https://github.com/stasinopoulos/commix.git commix && cd commix && python ./commix.py --install",
+    'webshag': "echo Webshag is unavailable",
+    'webslayer': "apt-get install git && git clone git://git.kali.org/packages/webslayer.git"
 })
 
-SPOOFING_STR = "burpsuite dnschef fiked hamster-sidejack hexinject iaxflood inviteflood ismtp mitmproxy ohrwurm protos-sip rebind responder rtpbreak rtpinsertsound rtpmixsound sctpscan siparmyknife sipp sipvicious sniffjoke sslsplit sslstrip thc-ipv6 voiphopper webscarab wifi-honey wireshark xspy yersinia zaproxy"
+SPOOFING_STR = "burpsuite dnschef fiked hamster-sidejack hexinject iaxflood inviteflood ismtp isr-evilgrade mitmproxy ohrwurm protos-sip rebind responder rtpbreak rtpinsertsound rtpmixsound sctpscan siparmyknife sipp sipvicious sniffjoke sslsplit sslstrip thc-ipv6 voiphopper webscarab wifi-honey wireshark xspy yersinia zaproxy"
 
 SPOOFIND_DATA = ToolData("Sniffing & Spoofing", SPOOFING_STR, {8: "apt-get install git && git clone git://git.kali.org/packages/isr-evilgrade.git"})
 
@@ -96,23 +96,23 @@ EXPLOIT_STR = "armitage backdoor-factory cisco-auditing-tool cisco-global-exploi
 
 EXPLOIT_DATA = ToolData("Exploitation Tools", EXPLOIT_STR, {})
 
-Forensics_STR = "binwalk bulk-extractor chntpw cuckoo dc3dd ddrescue dumpzilla extundelete foremost galleta guymager iphone-backup-analyzer p0f pdf-parser pdfid pdgmail peepdf volatility xplico"
+Forensics_STR = "binwalk bulk-extractor capstone chntpw cuckoo dc3dd ddrescue distorm3 dumpzilla extundelete foremost galleta guymager iphone-backup-analyzer p0f pdf-parser pdfid pdgmail peepdf volatility xplico"
 
 Forensics_DATA = ToolData("Forensics Data", Forensics_STR, {
-    2: "apt-get install git && git clone git://git.kali.org/packages/capstone.git",
-    8: "apt-get install git && git clone git://git.kali.org/packages/distorm3.git"})
+    'capstone': "apt-get install git && git clone git://git.kali.org/packages/capstone.git",
+    'distorm3': "apt-get install git && git clone git://git.kali.org/packages/distorm3.git"})
 
-STRESS_STR = "dhcpig funkload iaxflood inviteflood ipv6-toolkit mdk3 reaver rtpflood slowhttptest t50 termineter thc-ipv6 thc-ssl-dos"
+STRESS_STR = "dhcpig funkload iaxflood inviteflood inundator ipv6-toolkit mdk3 reaver rtpflood slowhttptest t50 termineter thc-ipv6 thc-ssl-dos"
 
-STRESS_DATA = ToolData("Stress Testings", STRESS_STR, {3: "apt-get install git && git clone git://git.kali.org/packages/inundator.git"})
+STRESS_DATA = ToolData("Stress Testings", STRESS_STR, {4: "apt-get install git && git clone git://git.kali.org/packages/inundator.git"})
 
-PASSWORD_STR = "acccheck burpsuite cewl chntpw cisco-auditing-tool cmospwd creddump crunch findmyhash gpp-decrypt hash-identifier hexorbase john johnny keimpx maltego-teeth maskprocessor multiforcer ncrack oclgausscrack pack patator polenum rainbowcrack rcracki-mt rsmangler statsprocessor thc-pptp-bruter truecrack webscarab wordlists zaproxy"
+PASSWORD_STR = "acccheck burpsuite cewl chntpw cisco-auditing-tool cmospwd creddump crunch dbpwaudit findmyhash gpp-decrypt hash-identifier hexorbase thc-hydra john johnny keimpx maltego-teeth maskprocessor multiforcer ncrack oclgausscrack pack patator phrasendrescher polenum rainbowcrack rcracki-mt rsmangler sqldict statsprocessor thc-pptp-bruter truecrack webscarab wordlists zaproxy"
 
 PASSWORD_DATA = ToolData("Password Attacks", PASSWORD_STR, {
-    8: "apt-get install git && git clone git://git.kali.org/packages/dbpwaudit.git",
-    13: "echo 'please visit : https://www.thc.org/thc-hydra/' ",
-    24: "echo 'please visit : http://www.leidecker.info/projects/phrasendrescher/index.shtml' ",
-    29: "echo Sqldict is unavailable"
+    'dbpwaudit': "apt-get install git && git clone git://git.kali.org/packages/dbpwaudit.git",
+    'thc-hydra': "echo 'please visit : https://www.thc.org/thc-hydra/' ",
+    'phrasendrescher': "echo 'please visit : http://www.leidecker.info/projects/phrasendrescher/index.shtml' ",
+    'sqldict': "echo Sqldict is unavailable"
     })
 
 REVERSE_STR = "apktool dex2jar python-diStorm3 edb-debugger jad javasnoop JD OllyDbg smali Valgrind YARA"
