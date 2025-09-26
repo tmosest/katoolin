@@ -42,3 +42,7 @@ rm kali-archive-keyring_2024.1_all.deb
 # update
 sudo apt-get update
 ```
+
+Can cause issues with other packages might see something like below.
+
+- https://askubuntu.com/questions/591855/how-can-i-fix-e-sub-process-usr-bin-dpkg-returned-an-error-code-2
